@@ -4,14 +4,14 @@ def addtask ():
     file.write (task + "\n")
     file.close ()
 
-def viewtasks (): 
+def vtask (): 
     file = open ("tasks.txt", "r")
     tasks = file.readlines()
     for i, task in enumerate(tasks):
         print (f"{i+1}. {task}", end = "")
     file.close ()
 
-def edittask ():
+def edtask ():
     file = open ("tasks.txt", "r")
     tasks = file.readlines()
     file.close ()
@@ -25,3 +25,21 @@ def edittask ():
         file = open ("tasks.txt", "w")
         file.writelines(tasks)
         file.close ()
+
+def deltask ():
+    file = open ("tasks.txt", "r")
+    tasks = file.readlines()
+    file.close ()
+    print ("Current tasks:")
+    for i, task in enumerate(tasks):
+        print (f"{i+1}. {task}", end = "")
+    delete_index = int(input("\nEnter the number of the task to delete: ")) - 1
+    if 0 <= delete_index < len(tasks):
+        del tasks[delete_index]
+        file = open ("tasks.txt", "w")
+        file.writelines(tasks)
+        file.close ()
+
+def extask (): 
+    print ("Exiting the program.")
+    exit()
