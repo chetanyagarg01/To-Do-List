@@ -40,6 +40,22 @@ def deltask ():
         file.writelines(tasks)
         file.close ()
 
+def comptask (): 
+    file = open ("tasks.txt", "r")
+    tasks = file.readlines()
+    file.close ()
+    print ("Current tasks:")
+    for i, task in enumerate(tasks):
+        print (f"{i+1}. {task}", end = "")
+    complete_index = int(input("\nEnter the number of the task to mark as complete: ")) - 1
+    if 0 <= complete_index < len(tasks):
+        completed_task = tasks[complete_index].strip() + " (Completed)\n"
+        tasks[complete_index] = completed_task
+        file = open ("tasks.txt", "w")
+        file.writelines(tasks)
+        file.close ()
+    vtask() # Display the updated list of tasks after marking one as complete
+
 def extask (): 
     print ("Exiting the program.")
     exit()
